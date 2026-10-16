@@ -33,12 +33,16 @@ class Document(HTMLParser):
         self.titles = 0
         self.headings = 0
         self.lang = ''
+        self.styles = []
+        self.style_buffer = None
         self.ld_json = []
         self.json_buffer = None
         self.feed(text)
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
+        if tag == 'style':
+            self.style_buffer = ''
         if tag == 'html':
             self.lang = attrs.get('lang', '')
         if tag == 'title':
@@ -61,10 +65,15 @@ class Document(HTMLParser):
             self.json_buffer = ''
 
     def handle_data(self, data):
+        if self.style_buffer is not None:
+            self.style_buffer += data
         if self.json_buffer is not None:
             self.json_buffer += data
 
     def handle_endtag(self, tag):
+        if tag == 'style' and self.style_buffer is not None:
+            self.styles.append(self.style_buffer)
+            self.style_buffer = None
         if tag == 'script' and self.json_buffer is not None:
             self.ld_json.append(json.loads(self.json_buffer))
             self.json_buffer = None
@@ -125,6 +134,8 @@ for path, document in documents.items():
             if 'url' in node:
                 verify_site_url(node['url'], f'{relative} (JSON-LD)')
     page_url = urljoin(base, relative.removesuffix('index.html'))
+    for style in document.styles:
+        document.links.extend(re.findall(r'url\([\'\"]?([^\)\'\"]+)', style))
     for link in document.links:
         absolute = urljoin(page_url, link)
         target = resolve_url(absolute)

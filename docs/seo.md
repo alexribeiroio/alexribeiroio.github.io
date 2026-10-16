@@ -19,7 +19,7 @@
 
 O conteúdo principal já é HTML estático com `main`, `article`, um H1, cabeçalhos, links internos e âncoras. Busca tem fallback para arquivo/categorias sem JavaScript; há link para pular ao conteúdo, foco visível e idioma pt-BR. Giscus continua desligado. A revisão adiciona autoria visível com link, datas de atualização em `time`, alternativas textuais sociais e dimensões de imagens locais no corpo para reduzir deslocamento de layout.
 
-A folha CSS minificada tem aproximadamente 26 KiB; as duas fontes TTF locais somam cerca de 404 KiB e já usam `font-display: swap`. A imagem social tem cerca de 43 KiB e é metadado, não imagem no corpo. Não foram adicionados scripts de terceiros. Uma futura conversão licenciada das fontes para WOFF2 pode reduzir transferência. Não há medição de Core Web Vitals com usuários reais, nem auditoria completa WCAG/Lighthouse; não se atribui nota de desempenho sem medição.
+A folha CSS minificada tem aproximadamente 26 KiB e passou a ser incorporada ao HTML para eliminar uma requisição que bloqueava a renderização. As fontes WOFF2 locais somam 146.644 bytes, contra 410.536 bytes das TTF originais (redução de 64,3% no payload das fontes), preservando glifos, métricas e licença, com `font-display: swap`. As TTF permanecem disponíveis para compatibilidade com CSS previamente cacheado. A imagem social tem cerca de 43 KiB e é metadado, não imagem no corpo. Não foram adicionados scripts de terceiros. Não há medição de Core Web Vitals com usuários reais nem auditoria completa WCAG. A validação posterior no PageSpeed Insights é documentada em `docs/pagespeed.md`.
 
 ## Validação reproduzível
 
