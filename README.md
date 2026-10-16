@@ -84,7 +84,7 @@ Para ativar no GitHub, após enviar os arquivos:
    `github-pages` permite a branch `main`.
 3. Execute **Actions → Validar e publicar blog → Run workflow** na `main`, ou
    faça um novo push. Sem Pages habilitado, a etapa de configuração não conclui.
-4. Confira o deployment e abra `https://alexribeiroio.github.io/`.
+4. Confira o deployment e abra `https://www.alexribeiro.io/`.
 
 Somente o conteúdo de `public/` vira artefato de deploy. Essa pasta, os
 caches e o binário Hugo ficam fora do Git. O tema está incluído no
@@ -92,18 +92,20 @@ repositório, sem submódulos, para permitir clones e builds simples.
 
 ### Domínio alexribeiro.io
 
-No momento inicial, `baseURL` usa `https://alexribeiroio.github.io/`.
-Quando o domínio estiver pronto:
+A URL canônica é **https://www.alexribeiro.io/**, declarada em `baseURL`
+no `hugo.toml`. O domínio sem `www` redireciona para essa versão.
+Para configurar ou alterar o domínio:
 
 1. Verifique a propriedade do domínio no GitHub e configure **Custom domain**
    em Settings → Pages.
 2. Configure o DNS conforme a [documentação oficial](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site).
 3. Aguarde a emissão do certificado e habilite **Enforce HTTPS**.
-4. Atualize `baseURL` em `hugo.toml` para `https://alexribeiro.io/` e publique.
+4. Mantenha `baseURL` em `hugo.toml` alinhada ao domínio canônico com HTTPS e publique.
 5. Verifique navegação, URLs canônicas, sitemap e RSS no endereço final.
 
-O workflow recebe a URL efetiva do `actions/configure-pages`, incluindo o
-domínio configurado. Ao usar GitHub Actions, o domínio é configurado no
+O workflow preserva a URL declarada no Hugo, sem substituí-la pela URL
+informada pelo Pages. O build verifica as canônicas, os metadados, os feeds e
+o sitemap contra essa configuração. Ao usar GitHub Actions, o domínio é configurado no
 Pages; não é necessário criar um `CNAME` neste repositório.
 
 ## Comentários com Giscus

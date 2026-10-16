@@ -7,6 +7,7 @@ from pathlib import Path
 from urllib.parse import unquote, urljoin, urlsplit
 import json
 import argparse
+import os
 import re
 import sys
 import tomllib
@@ -26,6 +27,7 @@ class Document(HTMLParser):
         self.links = []
         self.ids = set()
         self.canonical = ''
+        self.meta_urls = []
         self.ld_json = []
         self.json_buffer = None
         self.feed(text)
@@ -40,6 +42,8 @@ class Document(HTMLParser):
             self.links.append(attrs['src'])
         if tag == 'link' and attrs.get('rel') == 'canonical':
             self.canonical = attrs['href']
+        if tag == 'meta' and attrs.get('property') == 'og:url':
+            self.meta_urls.append(attrs['content'])
         if tag == 'script' and attrs.get('type') == 'application/ld+json':
             self.json_buffer = ''
 
@@ -58,8 +62,17 @@ home = documents.get(root / 'index.html')
 if home is None:
     sys.exit('ERRO: index.html não foi gerado.')
 base = home.canonical
+config_base = tomllib.loads(Path('hugo.toml').read_text())['baseURL']
+expected_base = (os.environ.get('BLOG_BASE_URL') or config_base).rstrip('/') + '/'
+if base != expected_base:
+    errors.append(f'URL canônica da home diverge da configuração: {base} (esperado: {expected_base})')
 origin = urlsplit(base).netloc
 base_path = urlsplit(base).path
+
+
+def verify_site_url(url, source):
+    if not url or not url.startswith(expected_base):
+        errors.append(f'{source}: URL fora do endereço canônico {expected_base}: {url}')
 
 
 def resolve_url(url):
@@ -78,6 +91,12 @@ def resolve_url(url):
 
 for path, document in documents.items():
     relative = path.relative_to(root).as_posix()
+    verify_site_url(document.canonical, f'{relative} (canonical)')
+    for url in document.meta_urls:
+        verify_site_url(url, f'{relative} (Open Graph)')
+    for data in document.ld_json:
+        if 'url' in data:
+            verify_site_url(data['url'], f'{relative} (JSON-LD)')
     page_url = urljoin(base, relative.removesuffix('index.html'))
     for link in document.links:
         absolute = urljoin(page_url, link)
@@ -110,6 +129,12 @@ for required in [
 feed_links = []
 for xml in root.rglob('*.xml'):
     tree = ET.parse(xml)
+    for loc in tree.findall('.//{http://www.sitemaps.org/schemas/sitemap/0.9}loc'):
+        verify_site_url(loc.text, f'{xml} (sitemap)')
+    for link in tree.findall('./channel/link') + tree.findall('./channel/item/link'):
+        verify_site_url(link.text, f'{xml} (RSS)')
+    for link in tree.findall('./channel/{http://www.w3.org/2005/Atom}link'):
+        verify_site_url(link.get('href'), f'{xml} (Atom)')
     items = tree.findall('./channel/item')
     dates = [parsedate_to_datetime(item.findtext('pubDate')) for item in items]
     if dates != sorted(dates, reverse=True):
@@ -163,4 +188,4 @@ for source in (args.content_dir / 'posts').rglob('index.md'):
 if errors:
     print('\n'.join(f'ERRO: {error}' for error in errors))
     sys.exit(1)
-print(f'OK: {len(documents)} páginas HTML, links e assets locais, JSON-LD, XML/RSS, busca e exclusão de rascunhos verificados.')
+print(f'OK: {len(documents)} páginas HTML, URLs canônicas, links e assets locais, JSON-LD, XML/RSS, busca e exclusão de rascunhos verificados.')

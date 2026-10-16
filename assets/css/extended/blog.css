@@ -82,6 +82,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visibl
 .profile-links a:hover { color: var(--accent); }
 .profile-icon { display: inline-flex; }
 .profile-icon svg { width: 16px; height: 16px; }
+.social-links-icons { display: flex; align-items: center; gap: 2px; margin: 0; padding: 0; list-style: none; }
+.social-links-icons a { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 34px; color: var(--secondary); }
+.social-links-icons a:hover { color: var(--accent); }
+.social-links-icons .profile-icon svg { width: 18px; height: 18px; }
+.footer .social-links-icons { justify-content: center; gap: 12px; margin-bottom: 12px; }
 .section-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 0 0 15px; border-bottom: 1px solid var(--border); }
 .section-heading h2 { font-size: 13px; font-weight: 600; }
 .section-heading a { font-size: 12px; color: var(--secondary); }
@@ -147,7 +152,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visibl
   :root { --gap: 22px; }
   .header-nav { flex-wrap: wrap; row-gap: 14px; padding: 22px 0 16px; }
   .site-name { font-size: 22px; }
-  .header-actions { gap: 8px; }
+  .header-actions { width: 100%; justify-content: space-between; gap: 6px; }
   .menu { gap: 14px; font-size: 12px; }
   .header .rss-link { display: none; }
   .topic-nav { column-gap: 22px; padding: 8px 0; }
@@ -167,7 +172,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visibl
 }
 @media (max-width: 360px) {
   .header-actions { width: 100%; justify-content: space-between; }
-  .menu { gap: 22px; }
+  .menu { gap: 14px; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
