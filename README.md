@@ -171,3 +171,7 @@ dados estruturados, sitemap, bots e limites de validação. `/llms.txt` é
 gerado automaticamente do conteúdo público; não oferece autorização de
 treinamento. `make check` também testa o template de artigo com um build
 temporário isolado, sem publicar exemplos ou rascunhos.
+
+Os [resultados reais do Google PageSpeed Insights](docs/pagespeed.md)
+registram as medições mobile/desktop, os relatórios e a exceção de SEO
+das categorias vazias mantidas fora do índice.

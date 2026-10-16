@@ -1,0 +1,255 @@
+{
+  "source": "Google PageSpeed Insights, official public web interface; manually read rendered reports",
+  "date": "2026-10-16",
+  "timezone": "UTC",
+  "lighthouseVersion": "13.5.0",
+  "fieldData": "No data",
+  "categoryOrder": [
+    "performance",
+    "accessibility",
+    "best-practices",
+    "seo"
+  ],
+  "runs": [
+    {
+      "phase": "before",
+      "commit": "97507ea",
+      "url": "https://www.alexribeiro.io/",
+      "reportCreatedAt": "2026-10-16T22:31:29Z",
+      "strategy": "mobile",
+      "scores": {
+        "performance": 98,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "report": "https://pagespeed.web.dev/analysis/https-www-alexribeiro-io/fo5vqb9xu5?form_factor=mobile",
+      "intentionalNoindex": false
+    },
+    {
+      "phase": "before",
+      "commit": "97507ea",
+      "url": "https://www.alexribeiro.io/",
+      "reportCreatedAt": "2026-10-16T22:31:29Z",
+      "strategy": "desktop",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "report": "https://pagespeed.web.dev/analysis/https-www-alexribeiro-io/fo5vqb9xu5?form_factor=desktop",
+      "intentionalNoindex": false
+    },
+    {
+      "phase": "before",
+      "commit": "97507ea",
+      "url": "https://www.alexribeiro.io/sobre/",
+      "reportCreatedAt": "2026-10-16T22:31:46Z",
+      "strategy": "mobile",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "report": "https://pagespeed.web.dev/analysis/https-www-alexribeiro-io-sobre/o1hdgqps8v?form_factor=mobile",
+      "intentionalNoindex": false
+    },
+    {
+      "phase": "before",
+      "commit": "97507ea",
+      "url": "https://www.alexribeiro.io/sobre/",
+      "reportCreatedAt": "2026-10-16T22:31:46Z",
+      "strategy": "desktop",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "report": "https://pagespeed.web.dev/analysis/https-www-alexribeiro-io-sobre/o1hdgqps8v?form_factor=desktop",
+      "intentionalNoindex": false
+    },
+    {
+      "phase": "before",
+      "commit": "97507ea",
+      "url": "https://www.alexribeiro.io/arquivo/",
+      "reportCreatedAt": "2026-10-16T22:32:35Z",
+      "strategy": "mobile",
+      "scores": {
+        "performance": 98,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "report": "https://pagespeed.web.dev/analysis/https-www-alexribeiro-io-arquivo/37iq445yiz?form_factor=mobile",
+      "intentionalNoindex": false
+    },
+    {
+      "phase": "before",
+      "commit": "97507ea",
+      "url": "https://www.alexribeiro.io/arquivo/",
+      "reportCreatedAt": "2026-10-16T22:32:35Z",
+      "strategy": "desktop",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "report": "https://pagespeed.web.dev/analysis/https-www-alexribeiro-io-arquivo/37iq445yiz?form_factor=desktop",
+      "intentionalNoindex": false
+    },
+    {
+      "phase": "before",
+      "commit": "97507ea",
+      "url": "https://www.alexribeiro.io/categorias/cloud/",
+      "reportCreatedAt": "2026-10-16T22:32:56Z",
+      "strategy": "mobile",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 66
+      },
+      "report": "https://pagespeed.web.dev/analysis/https-www-alexribeiro-io-categorias-cloud/iacdk7yis5?form_factor=mobile",
+      "intentionalNoindex": true
+    },
+    {
+      "phase": "before",
+      "commit": "97507ea",
+      "url": "https://www.alexribeiro.io/categorias/cloud/",
+      "reportCreatedAt": "2026-10-16T22:32:56Z",
+      "strategy": "desktop",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 66
+      },
+      "report": "https://pagespeed.web.dev/analysis/https-www-alexribeiro-io-categorias-cloud/iacdk7yis5?form_factor=desktop",
+      "intentionalNoindex": true
+    },
+    {
+      "phase": "after",
+      "commit": "cc9394c",
+      "url": "https://www.alexribeiro.io/",
+      "reportCreatedAt": "2026-10-16T22:34:37Z",
+      "strategy": "mobile",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "report": "https://pagespeed.web.dev/analysis/https-www-alexribeiro-io/2yk5rsnpbb?form_factor=mobile",
+      "intentionalNoindex": false
+    },
+    {
+      "phase": "after",
+      "commit": "cc9394c",
+      "url": "https://www.alexribeiro.io/",
+      "reportCreatedAt": "2026-10-16T22:34:37Z",
+      "strategy": "desktop",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "report": "https://pagespeed.web.dev/analysis/https-www-alexribeiro-io/2yk5rsnpbb?form_factor=desktop",
+      "intentionalNoindex": false
+    },
+    {
+      "phase": "after",
+      "commit": "cc9394c",
+      "url": "https://www.alexribeiro.io/sobre/",
+      "reportCreatedAt": "2026-10-16T22:34:37Z",
+      "strategy": "mobile",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "report": "https://pagespeed.web.dev/analysis/https-www-alexribeiro-io-sobre/pv67h1l64i?form_factor=mobile",
+      "intentionalNoindex": false
+    },
+    {
+      "phase": "after",
+      "commit": "cc9394c",
+      "url": "https://www.alexribeiro.io/sobre/",
+      "reportCreatedAt": "2026-10-16T22:34:37Z",
+      "strategy": "desktop",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "report": "https://pagespeed.web.dev/analysis/https-www-alexribeiro-io-sobre/pv67h1l64i?form_factor=desktop",
+      "intentionalNoindex": false
+    },
+    {
+      "phase": "after",
+      "commit": "cc9394c",
+      "url": "https://www.alexribeiro.io/arquivo/",
+      "reportCreatedAt": "2026-10-16T22:34:39Z",
+      "strategy": "mobile",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "report": "https://pagespeed.web.dev/analysis/https-www-alexribeiro-io-arquivo/v5pwb57dmz?form_factor=mobile",
+      "intentionalNoindex": false
+    },
+    {
+      "phase": "after",
+      "commit": "cc9394c",
+      "url": "https://www.alexribeiro.io/arquivo/",
+      "reportCreatedAt": "2026-10-16T22:34:39Z",
+      "strategy": "desktop",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "report": "https://pagespeed.web.dev/analysis/https-www-alexribeiro-io-arquivo/v5pwb57dmz?form_factor=desktop",
+      "intentionalNoindex": false
+    },
+    {
+      "phase": "after",
+      "commit": "cc9394c",
+      "url": "https://www.alexribeiro.io/categorias/cloud/",
+      "reportCreatedAt": "2026-10-16T22:34:44Z",
+      "strategy": "mobile",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 66
+      },
+      "report": "https://pagespeed.web.dev/analysis/https-www-alexribeiro-io-categorias-cloud/qqoejiota9?form_factor=mobile",
+      "intentionalNoindex": true
+    },
+    {
+      "phase": "after",
+      "commit": "cc9394c",
+      "url": "https://www.alexribeiro.io/categorias/cloud/",
+      "reportCreatedAt": "2026-10-16T22:34:44Z",
+      "strategy": "desktop",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 66
+      },
+      "report": "https://pagespeed.web.dev/analysis/https-www-alexribeiro-io-categorias-cloud/qqoejiota9?form_factor=desktop",
+      "intentionalNoindex": true
+    }
+  ]
+}
