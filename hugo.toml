@@ -82,6 +82,19 @@ copyright = '© Alex Ribeiro · Conteúdo original sob CC BY-SA 4.0, salvo indic
     minMatchCharLength = 2
     keys = ['title', 'summary', 'content', 'categories', 'tags']
 
+[[params.socialIcons]]
+  name = 'github'
+  title = 'GitHub'
+  url = 'https://github.com/alexribeiroio'
+[[params.socialIcons]]
+  name = 'instagram'
+  title = 'Instagram'
+  url = 'https://www.instagram.com/alexribeiroio/'
+[[params.socialIcons]]
+  name = 'linkedin'
+  title = 'LinkedIn'
+  url = 'https://www.linkedin.com/in/alexribeiroio/'
+
 [[menus.main]]
   name = 'Sobre'
   pageRef = '/sobre'

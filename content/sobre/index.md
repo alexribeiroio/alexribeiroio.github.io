@@ -23,4 +23,4 @@ O blog reúne notícias comentadas, aprendizados, experiências e opiniões sobr
 
 Você pode explorar as [categorias](/categorias/), navegar pelo [arquivo de publicações](/arquivo/) ou acompanhar os novos textos pelo [RSS](/index.xml).
 
-Também estou no [GitHub](https://github.com/alexribeiroio).
+Você também pode me encontrar nestes perfis:
