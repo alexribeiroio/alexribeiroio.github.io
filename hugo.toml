@@ -22,7 +22,7 @@ copyright = '© Alex Ribeiro · Conteúdo original sob CC BY-SA 4.0, salvo indic
   tag = 'tags'
 
 [outputs]
-  home = ['HTML', 'RSS', 'JSON']
+  home = ['HTML', 'RSS', 'JSON', 'LLMS']
   section = ['HTML', 'RSS']
   taxonomy = ['HTML', 'RSS']
   term = ['HTML', 'RSS']
@@ -129,3 +129,9 @@ copyright = '© Alex Ribeiro · Conteúdo original sob CC BY-SA 4.0, salvo indic
   name = 'Tags'
   pageRef = '/tags'
   weight = 60
+
+[outputFormats.LLMS]
+  mediaType = 'text/plain'
+  baseName = 'llms'
+  isPlainText = true
+  notAlternative = true

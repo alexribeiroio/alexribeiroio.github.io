@@ -1,0 +1,6 @@
+{{ $image := partial "seo_image.html" . }}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ .Title | default site.Title }}">
+<meta name="twitter:description" content="{{ partial "seo_description.html" . }}">
+<meta name="twitter:image" content="{{ $image.url }}">
+<meta name="twitter:image:alt" content="{{ $image.alt }}">

@@ -1,0 +1,7 @@
+{{- $description := .Description -}}
+{{- if not $description -}}
+  {{- if .IsPage -}}{{- $description = .Summary | plainify -}}
+  {{- else if eq .Kind "term" -}}{{- $description = printf "Publicações sobre %s no blog de %s." .Title site.Title -}}
+  {{- else -}}{{- $description = site.Params.description -}}{{- end -}}
+{{- end -}}
+{{- return ($description | plainify | htmlUnescape | strings.TrimSpace) -}}

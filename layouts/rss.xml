@@ -2,6 +2,7 @@
 {{- if .IsHome }}{{ $pages = where site.RegularPages "Section" "posts" }}{{ end -}}
 {{- if eq .Kind "taxonomy" }}{{ $pages = where site.RegularPages "Section" "posts" }}{{ end -}}
 {{- if eq .Kind "term" }}{{ $pages = .RegularPages }}{{ end -}}
+{{- $pages = where $pages "Params.hiddenInRss" "ne" true -}}
 {{- $pages = $pages.ByDate.Reverse | first site.Config.Services.RSS.Limit -}}
 {{- printf "<?xml version=\"1.0\" encoding=\"utf-8\"?>" | safeHTML }}
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">

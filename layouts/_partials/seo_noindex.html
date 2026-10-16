@@ -1,0 +1,1 @@
+{{- return (or .Params.robotsNoIndex (eq .Kind "404") (and (in (slice "section" "taxonomy" "term") .Kind) (eq (len .RegularPagesRecursive) 0))) -}}

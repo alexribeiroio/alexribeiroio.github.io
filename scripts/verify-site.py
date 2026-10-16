@@ -4,6 +4,7 @@ from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
 from html.parser import HTMLParser
 from pathlib import Path
+from urllib.robotparser import RobotFileParser
 from urllib.parse import unquote, urljoin, urlsplit
 import json
 import argparse
@@ -28,12 +29,24 @@ class Document(HTMLParser):
         self.ids = set()
         self.canonical = ''
         self.meta_urls = []
+        self.meta = {}
+        self.titles = 0
+        self.headings = 0
+        self.lang = ''
         self.ld_json = []
         self.json_buffer = None
         self.feed(text)
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
+        if tag == 'html':
+            self.lang = attrs.get('lang', '')
+        if tag == 'title':
+            self.titles += 1
+        if tag == 'h1':
+            self.headings += 1
+        if tag == 'meta':
+            self.meta[attrs.get('name') or attrs.get('property') or attrs.get('http-equiv')] = attrs.get('content', '')
         if attrs.get('id'):
             self.ids.add(attrs['id'])
         if tag in {'a', 'link'} and attrs.get('href'):
@@ -94,9 +107,23 @@ for path, document in documents.items():
     verify_site_url(document.canonical, f'{relative} (canonical)')
     for url in document.meta_urls:
         verify_site_url(url, f'{relative} (Open Graph)')
+    if 'refresh' not in document.meta:
+        if document.titles != 1 or document.headings != 1 or document.lang != 'pt-BR':
+            errors.append(f'{relative}: título, H1 ou idioma inválido')
+        for key in ['description', 'og:title', 'og:description', 'og:image', 'og:image:alt', 'twitter:card', 'twitter:title', 'twitter:description', 'twitter:image', 'twitter:image:alt']:
+            if not document.meta.get(key):
+                errors.append(f'{relative}: metadado ausente: {key}')
+        if document.meta.get('og:description') != document.meta.get('description'):
+            errors.append(f'{relative}: descrições sociais divergentes')
+        if document.meta.get('twitter:image') != document.meta.get('og:image'):
+            errors.append(f'{relative}: imagens sociais divergentes')
+        image_target = resolve_url(document.meta.get('og:image', ''))
+        if image_target is not None and not image_target.is_file():
+            errors.append(f'{relative}: imagem social ausente')
     for data in document.ld_json:
-        if 'url' in data:
-            verify_site_url(data['url'], f'{relative} (JSON-LD)')
+        for node in data.get('@graph', [data]):
+            if 'url' in node:
+                verify_site_url(node['url'], f'{relative} (JSON-LD)')
     page_url = urljoin(base, relative.removesuffix('index.html'))
     for link in document.links:
         absolute = urljoin(page_url, link)
@@ -121,7 +148,7 @@ for required in [
     'categorias/inteligencia-artificial/index.html',
     'categorias/cloud/index.html', 'categorias/produtividade/index.html',
     '404.html', 'index.json',
-    'index.xml', 'posts/index.xml', 'sitemap.xml', 'robots.txt',
+    'index.xml', 'posts/index.xml', 'sitemap.xml', 'robots.txt', 'llms.txt',
 ]:
     if not (root / required).is_file():
         errors.append(f'Saída obrigatória ausente: {required}')
@@ -131,6 +158,9 @@ for xml in root.rglob('*.xml'):
     tree = ET.parse(xml)
     for loc in tree.findall('.//{http://www.sitemaps.org/schemas/sitemap/0.9}loc'):
         verify_site_url(loc.text, f'{xml} (sitemap)')
+        target = resolve_url(loc.text)
+        if target not in documents or 'noindex' in documents[target].meta.get('robots', ''):
+            errors.append(f'{xml}: sitemap inclui página ausente ou noindex: {loc.text}')
     for link in tree.findall('./channel/link') + tree.findall('./channel/item/link'):
         verify_site_url(link.text, f'{xml} (RSS)')
     for link in tree.findall('./channel/{http://www.w3.org/2005/Atom}link'):
@@ -185,7 +215,29 @@ for source in (args.content_dir / 'posts').rglob('index.md'):
     elif target is None or not target.is_file():
         errors.append(f'Publicação ausente: {source}')
 
+llms = (root / 'llms.txt').read_text()
+llms_links = re.findall(r'\]\((https://[^)]+)\)', llms)
+for link in llms_links:
+    verify_site_url(link, 'llms.txt')
+    target = resolve_url(link)
+    if target is None or not target.is_file():
+        errors.append(f'llms.txt: link sem destino público: {link}')
+for link in feed_links:
+    if link not in llms_links:
+        errors.append(f'llms.txt: publicação do RSS ausente: {link}')
+robots = RobotFileParser()
+robots.parse((root / 'robots.txt').read_text().splitlines())
+for agent in ['Googlebot', 'bingbot', 'OAI-SearchBot', 'Claude-SearchBot', 'Claude-User']:
+    if not robots.can_fetch(agent, base):
+        errors.append(f'Busca pública bloqueada: {agent}')
+for agent in ['GPTBot', 'ClaudeBot', 'Google-Extended']:
+    if robots.can_fetch(agent, base):
+        errors.append(f'Coleta para treinamento não bloqueada: {agent}')
+for path in ['busca/index.html', '404.html']:
+    if 'noindex' not in documents[root / path].meta.get('robots', ''):
+        errors.append(f'{path}: noindex ausente')
+
 if errors:
     print('\n'.join(f'ERRO: {error}' for error in errors))
     sys.exit(1)
-print(f'OK: {len(documents)} páginas HTML, URLs canônicas, links e assets locais, JSON-LD, XML/RSS, busca e exclusão de rascunhos verificados.')
+print(f'OK: {len(documents)} páginas HTML, URLs canônicas, links e assets locais, metadados sociais, JSON-LD, XML/RSS, llms.txt, robots, busca e exclusão de rascunhos verificados.')

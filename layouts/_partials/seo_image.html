@@ -1,0 +1,11 @@
+{{- $image := dict -}}
+{{- with .Params.cover.image -}}
+  {{- $url := . | absURL -}}
+  {{- with or ($.Resources.Get .) (resources.Get .) -}}{{- $url = .Permalink -}}{{- end -}}
+  {{- $image = dict "url" $url "alt" ($.Params.cover.alt | default $.Title) -}}
+{{- else -}}
+  {{- $base := resources.Get "images/social-base.png" -}}
+  {{- $banner := $base | images.Filter (images.Text "Alex Ribeiro" (dict "color" "#ecece9" "size" 82 "x" 80 "y" 160)) (images.Text "Inteligência artificial, cloud e produtividade" (dict "color" "#f2ad56" "size" 34 "x" 80 "y" 300)) (images.Text "www.alexribeiro.io" (dict "color" "#a0a7b2" "size" 28 "x" 80 "y" 480)) -}}
+  {{- $image = dict "url" $banner.Permalink "alt" "Alex Ribeiro — Inteligência artificial, cloud e produtividade" "width" $banner.Width "height" $banner.Height -}}
+{{- end -}}
+{{- return $image -}}

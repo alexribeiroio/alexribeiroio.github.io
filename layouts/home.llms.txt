@@ -1,0 +1,27 @@
+# {{ site.Title }}
+
+> {{ site.Params.description }}
+
+Índice gerado do conteúdo público. As páginas HTML contêm o texto completo.
+Este arquivo não concede permissões de treinamento nem substitui robots.txt ou as licenças indicadas nas páginas.
+
+## Sobre o site
+{{ range slice "/sobre" "/licencas" }}{{ with site.GetPage . }}
+- [{{ .Title }}]({{ .Permalink }}): {{ partial "seo_description.html" . }}
+{{ end }}{{ end }}
+## Publicações
+{{ $posts := where site.RegularPages "Section" "posts" }}
+{{ range $posts.ByDate.Reverse }}{{ if and (not .Draft) (not (partial "seo_noindex.html" .)) }}
+- [{{ .Title }}]({{ .Permalink }}): {{ partial "seo_description.html" . }}
+{{ end }}{{ else }}
+Ainda não há artigos publicados.
+{{ end }}
+## Navegação
+{{ range slice "/arquivo" "/categorias" "/tags" }}{{ with site.GetPage . }}
+- [{{ .Title }}]({{ .Permalink }}): {{ partial "seo_description.html" . }}
+{{ end }}{{ end }}
+{{ range site.Taxonomies.categorias.Alphabetical }}{{ if gt .Count 0 }}
+- [{{ .Page.Title }}]({{ .Page.Permalink }}): {{ partial "seo_description.html" .Page }}
+{{ end }}{{ end }}
+- [RSS]({{ "index.xml" | absURL }}): Novas publicações.
+- [Sitemap]({{ "sitemap.xml" | absURL }}): URLs disponíveis para indexação.

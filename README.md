@@ -163,3 +163,11 @@ checksum juntos e valide o build antes de publicar.
 Materiais de terceiros mantêm os direitos e licenças de seus titulares.
 Os comentários pertencem aos seus autores. A licença editorial não é
 automaticamente aplicada a eles.
+
+## SEO e descoberta
+
+A [revisão técnica de SEO](docs/seo.md) documenta canonical, metadados,
+dados estruturados, sitemap, bots e limites de validação. `/llms.txt` é
+gerado automaticamente do conteúdo público; não oferece autorização de
+treinamento. `make check` também testa o template de artigo com um build
+temporário isolado, sem publicar exemplos ou rascunhos.

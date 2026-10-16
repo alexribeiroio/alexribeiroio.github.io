@@ -7,3 +7,4 @@ if [[ -n ${BLOG_BASE_URL:-} ]]; then
 fi
 ./scripts/hugo.sh "${args[@]}" "$@"
 python3 scripts/verify-site.py public
+python3 scripts/test-seo.py
