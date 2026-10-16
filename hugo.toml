@@ -1,0 +1,118 @@
+baseURL = 'https://alexribeiroio.github.io/'
+title = 'Alex Ribeiro'
+theme = 'PaperMod'
+locale = 'pt-BR'
+defaultContentLanguage = 'pt-br'
+timeZone = 'America/Sao_Paulo'
+enableRobotsTXT = true
+enableGitInfo = false
+capitalizeListTitles = false
+removePathAccents = true
+summaryLength = 35
+copyright = '© Alex Ribeiro · Conteúdo original sob CC BY-SA 4.0, salvo indicação em contrário.'
+
+[pagination]
+  pagerSize = 10
+
+[permalinks.page]
+  posts = '/posts/:year/:month/:slug/'
+
+[taxonomies]
+  category = 'categorias'
+  tag = 'tags'
+
+[outputs]
+  home = ['HTML', 'RSS', 'JSON']
+  section = ['HTML', 'RSS']
+  taxonomy = ['HTML', 'RSS']
+  term = ['HTML', 'RSS']
+
+[services.rss]
+  limit = 30
+
+[markup.highlight]
+  noClasses = false
+  lineNos = false
+
+[markup.goldmark.renderer]
+  unsafe = false
+
+[params]
+  description = 'Notas sobre inteligência artificial, cloud e produtividade. Experiências, descobertas e opiniões de Alex Ribeiro.'
+  author = 'Alex Ribeiro'
+  mainSections = ['posts']
+  defaultTheme = 'dark'
+  disableThemeToggle = false
+  disableSpecial1stPost = true
+  disableScrollToTop = true
+  hideAuthor = true
+  ShowReadingTime = true
+  ShowBreadCrumbs = true
+  ShowPostNavLinks = true
+  ShowCodeCopyButtons = true
+  ShowRssButtonInSectionTermList = true
+  ShowShareButtons = false
+  ShowToc = true
+  TocOpen = false
+  DateFormat = '02 de January de 2006'
+
+  [params.assets]
+    favicon = 'favicon.svg'
+    favicon16x16 = 'favicon-16x16.png'
+    favicon32x32 = 'favicon-32x32.png'
+    apple_touch_icon = 'apple-touch-icon.png'
+    safari_pinned_tab = 'favicon.svg'
+    theme_color = '#17191d'
+
+  [params.footer]
+    hideCopyright = true
+    text = '© Alex Ribeiro · [Licenças](/licencas/) · [RSS](/index.xml)'
+
+  [params.giscus]
+    # Ative após configurar Discussions e instalar o app em https://giscus.app/pt.
+    enabled = false
+    repo = 'alexribeiroio/alexribeiroio.github.io'
+    repoId = ''
+    category = 'Comentários'
+    categoryId = ''
+
+  [params.fuseOpts]
+    ignoreLocation = true
+    threshold = 0.35
+    minMatchCharLength = 2
+    keys = ['title', 'summary', 'content', 'categories', 'tags']
+
+[[menus.main]]
+  name = 'Sobre'
+  pageRef = '/sobre'
+  weight = 10
+[[menus.main]]
+  name = 'Arquivo'
+  pageRef = '/arquivo'
+  weight = 20
+[[menus.main]]
+  name = 'Busca'
+  pageRef = '/busca'
+  weight = 30
+
+[[menus.topics]]
+  name = 'IA'
+  # O cadastro acompanha a grafia do termo; a URL pública fica sem acentos.
+  pageRef = '/categorias/inteligência-artificial'
+  weight = 10
+[[menus.topics]]
+  name = 'Cloud'
+  pageRef = '/categorias/cloud'
+  weight = 20
+[[menus.topics]]
+  name = 'Produtividade'
+  pageRef = '/categorias/produtividade'
+  weight = 30
+[[menus.topics]]
+  name = 'Todos os temas'
+  pageRef = '/categorias'
+  weight = 50
+[[menus.topics]]
+  name = 'Tags'
+  pageRef = '/tags'
+  weight = 60

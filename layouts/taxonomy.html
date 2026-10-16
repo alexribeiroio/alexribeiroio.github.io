@@ -1,0 +1,12 @@
+{{ define "main" }}
+<header class="page-header"><h1>{{ .Title }}</h1><p class="post-description">{{ .Description }}</p></header>
+{{ if .Pages }}
+<ul class="terms-tags">
+  {{ range .Pages.ByTitle }}
+  <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }} <sup>{{ len .RegularPages }}</sup></a></li>
+  {{ end }}
+</ul>
+{{ else }}
+<div class="empty-state"><p>As tags vão aparecer aqui conforme as primeiras publicações forem ao ar.</p><a href="{{ "categorias/" | relURL }}">Explorar categorias ↗</a></div>
+{{ end }}
+{{ end }}

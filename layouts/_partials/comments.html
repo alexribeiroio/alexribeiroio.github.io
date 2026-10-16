@@ -1,0 +1,15 @@
+{{- $g := site.Params.giscus -}}
+{{- if and (eq .Section "posts") $g.enabled (ne hugo.Environment "preview") -}}
+  {{- if or (not $g.repoId) (not $g.categoryId) (not .Params.postId) -}}
+    {{- errorf "Giscus: preencha repoId/categoryId na configuração e postId em %s" .Path -}}
+  {{- else -}}
+  <section class="comments" aria-labelledby="comments-title" data-repo="{{ $g.repo }}" data-repo-id="{{ $g.repoId }}" data-category="{{ $g.category }}" data-category-id="{{ $g.categoryId }}" data-term="{{ .Params.postId }}">
+    <h2 id="comments-title">Vamos conversar?</h2>
+    <p>Comentários e reações com sua conta GitHub.</p>
+    <div class="giscus"></div>
+    <noscript><p>Para comentar, habilite JavaScript ou acesse as <a href="https://github.com/{{ $g.repo }}/discussions">discussões no GitHub</a>.</p></noscript>
+  </section>
+  {{- $script := resources.Get "js/comments.js" | minify | fingerprint -}}
+  <script defer src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}"></script>
+  {{- end -}}
+{{- end -}}

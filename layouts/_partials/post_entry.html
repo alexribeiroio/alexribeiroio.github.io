@@ -1,0 +1,13 @@
+<article class="post-entry">
+  <div class="entry-meta">
+    <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date | time.Format "02 Jan 2006" }}</time>
+    {{ range .GetTerms "categorias" }}<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}
+    {{ if .Draft }}<span class="draft-label">Rascunho de exemplo</span>{{ end }}
+  </div>
+  <header class="entry-header"><h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2></header>
+  <div class="entry-content"><p>{{ .Description | default (.Summary | plainify) }}</p></div>
+  <footer class="entry-details">
+    <span>{{ .ReadingTime }} min de leitura</span>
+    <ul class="entry-tags" aria-label="Tags">{{ range .GetTerms "tags" }}<li><a href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a></li>{{ end }}</ul>
+  </footer>
+</article>

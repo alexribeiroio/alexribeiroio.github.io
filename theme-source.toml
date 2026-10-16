@@ -1,0 +1,6 @@
+# Snapshot vendorizado sem alterações em themes/PaperMod.
+repository = 'https://github.com/adityatelange/hugo-PaperMod'
+commit = 'd3768854d00ad003b0a8dbdba254ce9224377a01'
+archive = 'https://codeload.github.com/adityatelange/hugo-PaperMod/tar.gz/d3768854d00ad003b0a8dbdba254ce9224377a01'
+sha256 = 'ea51b14c9f5501234a860765ce44618d777e3b8581f3cbe5f54fb6262429e900'
+license = 'MIT; ver themes/PaperMod/LICENSE e avisos de dependências nos assets'

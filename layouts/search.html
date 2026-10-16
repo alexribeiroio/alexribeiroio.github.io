@@ -1,0 +1,14 @@
+{{ define "main" }}
+<header class="page-header">
+  <p class="eyebrow">EXPLORE O BLOG</p>
+  <h1>{{ .Title }}</h1>
+  <p class="post-description">Busque por assunto, título ou uma palavra que ficou na memória.</p>
+</header>
+<div id="searchbox" class="searchbox">
+  <label for="searchInput">O que você quer encontrar?</label>
+  <input id="searchInput" type="search" placeholder="Experimente IA, AWS ou automação…" autocomplete="off" maxlength="120" disabled>
+  <p id="searchStatus" class="search-status" role="status" aria-live="polite">Carregando a busca…</p>
+  <ul id="searchResults" class="searchResults" aria-label="Resultados da busca"></ul>
+</div>
+<noscript><p>A busca precisa de JavaScript. Você também pode navegar pelas <a href="{{ "categorias/" | relURL }}">categorias</a> e pelo <a href="{{ "arquivo/" | relURL }}">arquivo</a>.</p></noscript>
+{{ end }}
