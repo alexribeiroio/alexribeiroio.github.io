@@ -1,7 +1,7 @@
 {{ with site.Params.socialIcons }}
 <nav class="profile-links" aria-label="Perfis de Alex Ribeiro">
   {{ range . }}
-  <a href="{{ .url }}" rel="me noopener noreferrer" target="_blank" aria-label="{{ .title }} de Alex Ribeiro (abre em nova aba)">
+  <a href="{{ .url }}" rel="me noopener noreferrer" target="_blank" data-ph-outbound="{{ .name }}" aria-label="{{ .title }} de Alex Ribeiro (abre em nova aba)">
     <span class="profile-icon" aria-hidden="true">{{ partial "svg.html" . }}</span>
     <span>{{ .title }}</span>
   </a>

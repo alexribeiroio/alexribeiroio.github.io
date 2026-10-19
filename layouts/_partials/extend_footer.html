@@ -1,0 +1,35 @@
+{{- $ph := site.Params.posthog -}}
+{{- $prod := hugo.IsProduction | or (eq site.Params.env "production") -}}
+{{- if and $ph.enabled $prod $ph.apiKey -}}
+{{- $page := dict "section" .Section "kind" .Kind -}}
+{{- if and (eq .Kind "page") (eq .Section "posts") -}}
+  {{- $page = merge $page (dict
+    "postId" .Params.postId
+    "slug" .Slug
+    "categorias" (.Params.categorias | default slice)
+    "tags" (.Params.tags | default slice)
+  ) -}}
+{{- end -}}
+<aside id="cookies" class="ph-consent" hidden aria-hidden="true" role="dialog" aria-labelledby="ph-consent-title" aria-describedby="ph-consent-desc">
+  <div class="ph-consent__inner">
+    <p id="ph-consent-desc" class="ph-consent__copy">
+      <span id="ph-consent-title" class="visually-hidden">Cookies e analytics</span>
+      Usamos analytics anônimos (PostHog) para melhorar o site — só depois do seu aceite.
+      <a href="{{ "privacidade/" | relURL }}">Saiba mais</a>.
+    </p>
+    <div class="ph-consent__actions">
+      <button type="button" class="ph-consent__btn" id="ph-consent-deny">Recusar</button>
+      <button type="button" class="ph-consent__btn ph-consent__btn--accept" id="ph-consent-accept">Aceitar</button>
+    </div>
+  </div>
+</aside>
+<script>
+  window.__PH_CONFIG__ = {{ dict "apiKey" $ph.apiKey "apiHost" ($ph.apiHost | default "https://us.i.posthog.com") "defaults" ($ph.defaults | default "2026-05-30") | jsonify | safeJS }};
+  window.__PH_PAGE__ = {{ $page | jsonify | safeJS }};
+  window.__PH_ON_READY__ = window.__PH_ON_READY__ || [];
+</script>
+{{- $consent := resources.Get "js/posthog-consent.js" | minify | fingerprint -}}
+{{- $events := resources.Get "js/posthog-events.js" | minify | fingerprint -}}
+<script defer src="{{ $consent.RelPermalink }}" integrity="{{ $consent.Data.Integrity }}" crossorigin="anonymous"></script>
+<script defer src="{{ $events.RelPermalink }}" integrity="{{ $events.Data.Integrity }}" crossorigin="anonymous"></script>
+{{- end -}}

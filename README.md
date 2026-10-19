@@ -2,7 +2,8 @@
 
 Blog pessoal em português sobre IA, cloud e produtividade.
 Hugo + PaperMod, modo escuro por padrão e alternância para claro.
-Sem newsletter, analytics ou cadastro próprio.
+Sem newsletter ou cadastro próprio. Analytics com PostHog só em produção,
+após opt-in (sem session replay).
 
 ## Desenvolvimento
 
@@ -108,6 +109,21 @@ informada pelo Pages. O build verifica as canônicas, os metadados, os feeds e
 o sitemap contra essa configuração. Ao usar GitHub Actions, o domínio é configurado no
 Pages; não é necessário criar um `CNAME` neste repositório.
 
+## Analytics com PostHog
+
+Em produção (`HUGO_ENVIRONMENT=production`), o site pode carregar o
+[PostHog](https://posthog.com/) **somente depois do aceite** no aviso de
+cookies. Prévia e `make serve` não incluem o script.
+
+Configure em `hugo.toml` sob `[params.posthog]` (`enabled`, `apiKey`,
+`apiHost`, `defaults`). A chave de projeto do navegador é pública por
+desenho. Session replay e autocapture ficam desligados; pageviews e
+eventos nomeados (tema, busca, links externos, CTAs, profundidade de
+leitura) são registrados após o consentimento.
+
+A página [Privacidade](https://www.alexribeiro.io/privacidade/) descreve o
+que é coletado. O rodapé tem link para gerenciar cookies.
+
 ## Comentários com Giscus
 
 A integração existe, mas está **desativada até a configuração no GitHub**.
@@ -135,6 +151,7 @@ comentar. Caso configure restrições de origem no serviço, autorize os dois do
 
 - `content/posts/AAAA/MM/DD-slug/index.md`: conteúdo e imagens por publicação.
 - `content/sobre/`: biografia pública.
+- `content/privacidade/`: privacidade, cookies e opt-in do PostHog.
 - `content/categorias/` e `content/tags/`: páginas de navegação por assunto.
 - `layouts/`: adaptações pontuais de navegação, listas, busca, RSS e comentários.
 - `assets/css/extended/blog.css`: identidade visual; fontes locais em `static/fonts/`.

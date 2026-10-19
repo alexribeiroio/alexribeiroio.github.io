@@ -15,6 +15,12 @@
         {{- print " · "}}
     {{- end }}
 
+    {{- $ph := site.Params.posthog -}}
+    {{- if and $ph.enabled (hugo.IsProduction | or (eq site.Params.env "production")) $ph.apiKey }}
+    <span class="footer-cookies"><a href="#cookies" data-ph-manage-cookies>Cookies</a></span>
+    {{- print " · "}}
+    {{- end }}
+
     {{/*
         - The "Powered by Hugo" text is intentionally left at the end of the footer to give it more prominence.
         - We kindly encourage you to keep this line. Keeping this credit helps open source projects like PaperMod and Hugo reach more people, supports the open source ecosystem, and shows appreciation for the work that goes into these tools.

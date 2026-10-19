@@ -2,7 +2,7 @@
 <ul class="social-links-icons" aria-label="Redes sociais">
   {{ range . }}
   <li>
-    <a href="{{ .url }}" rel="me noopener noreferrer" target="_blank" title="{{ .title }}" aria-label="{{ .title }} de Alex Ribeiro (abre em nova aba)">
+    <a href="{{ .url }}" rel="me noopener noreferrer" target="_blank" title="{{ .title }}" data-ph-outbound="{{ .name }}" aria-label="{{ .title }} de Alex Ribeiro (abre em nova aba)">
       <span class="profile-icon" aria-hidden="true">{{ partial "svg.html" . }}</span>
     </a>
   </li>

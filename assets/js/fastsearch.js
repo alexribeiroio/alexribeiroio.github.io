@@ -66,5 +66,10 @@ document.getElementById('searchbox').addEventListener('keydown', event => {
     input.value = '';
     search();
     input.focus();
+  } else if (event.key === 'Enter' && fuse) {
+    const query = input.value.trim();
+    if (query.length >= 2 && typeof window.__phSearch === 'function') {
+      window.__phSearch(query.length);
+    }
   }
 });

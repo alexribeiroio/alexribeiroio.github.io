@@ -156,6 +156,7 @@ for css in root.rglob('*.css'):
 for required in [
     'sobre/index.html', 'arquivo/index.html', 'busca/index.html',
     'categorias/index.html', 'tags/index.html', 'licencas/index.html',
+    'privacidade/index.html',
     'categorias/inteligencia-artificial/index.html',
     'categorias/cloud/index.html', 'categorias/produtividade/index.html',
     '404.html', 'index.json',

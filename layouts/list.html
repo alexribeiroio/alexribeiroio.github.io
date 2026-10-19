@@ -7,7 +7,7 @@
 
 {{ if .IsHome }}
   {{ if eq $paginator.PageNumber 1 }}{{ partial "home_info.html" . }}{{ end }}
-  <header class="section-heading"><h2>Publicações recentes</h2><a href="{{ "arquivo/" | relURL }}">Ver arquivo <span aria-hidden="true">↗</span></a></header>
+  <header class="section-heading"><h2>Publicações recentes</h2><a href="{{ "arquivo/" | relURL }}" data-ph-cta="home_archive">Ver arquivo <span aria-hidden="true">↗</span></a></header>
 {{ else }}
   <header class="page-header">
     {{ partial "breadcrumbs.html" . }}
@@ -23,7 +23,7 @@
   <div class="empty-state">
     <p class="empty-title">{{ if $.IsHome }}As primeiras publicações vêm aí.{{ else }}Ainda não há publicações por aqui.{{ end }}</p>
     <p>{{ if $.IsHome }}Enquanto isso, conheça a proposta do blog e os assuntos que vão aparecer por aqui.{{ else }}Explore os outros temas ou volte para a página inicial.{{ end }}</p>
-    <a href="{{ if $.IsHome }}{{ "sobre/" | relURL }}{{ else }}{{ site.Home.RelPermalink }}{{ end }}">{{ if $.IsHome }}Sobre o blog{{ else }}Ir para o início{{ end }} <span aria-hidden="true">↗</span></a>
+    <a href="{{ if $.IsHome }}{{ "sobre/" | relURL }}{{ else }}{{ site.Home.RelPermalink }}{{ end }}" data-ph-cta="{{ if $.IsHome }}empty_sobre{{ else }}empty_home{{ end }}">{{ if $.IsHome }}Sobre o blog{{ else }}Ir para o início{{ end }} <span aria-hidden="true">↗</span></a>
   </div>
 {{ end }}
 

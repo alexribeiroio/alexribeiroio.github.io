@@ -66,7 +66,13 @@ copyright = '© Alex Ribeiro · Conteúdo original sob CC BY-SA 4.0, salvo indic
 
   [params.footer]
     hideCopyright = true
-    text = '© Alex Ribeiro · [Licenças](/licencas/) · [RSS](/index.xml)'
+    text = '© Alex Ribeiro · [Licenças](/licencas/) · [Privacidade](/privacidade/) · [RSS](/index.xml)'
+
+  [params.posthog]
+    enabled = true
+    apiKey = 'phc_wQo9bTZFTxLfKxPX4MJra8rxi3EdnWcsDHs4zU3CRaBM'
+    apiHost = 'https://us.i.posthog.com'
+    defaults = '2026-05-30'
 
   [params.giscus]
     # Ative após configurar Discussions e instalar o app em https://giscus.app/pt.
