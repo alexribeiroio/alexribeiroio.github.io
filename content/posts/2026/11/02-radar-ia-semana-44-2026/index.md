@@ -7,7 +7,7 @@ slug = 'radar-ia-semana-44-2026'
 postId = '40c0e477-98b0-8181-ae10-eeeb42b9c442'
 draft = false
 categorias = ['Inteligência Artificial']
-tags = ['ia', 'agentes', 'modelos', 'programacao', 'seguranca']
+tags = ['ia', 'agentes', 'modelos', 'programação', 'segurança']
 comments = true
 +++
 
