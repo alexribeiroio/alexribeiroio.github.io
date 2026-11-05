@@ -7,7 +7,7 @@
 
 {{ if .IsHome }}
   {{ if eq $paginator.PageNumber 1 }}{{ partial "home_info.html" . }}{{ end }}
-  <header class="section-heading"><h2>Publicações recentes</h2><a href="{{ "arquivo/" | relURL }}" data-ph-cta="home_archive">Ver arquivo <span aria-hidden="true">↗</span></a></header>
+  <header class="section-heading">{{ if eq $paginator.PageNumber 1 }}<h2>Publicações recentes</h2>{{ else }}<h1>Publicações recentes</h1>{{ end }}<a href="{{ "arquivo/" | relURL }}" data-ph-cta="home_archive">Ver arquivo <span aria-hidden="true">↗</span></a></header>
 {{ else }}
   <header class="page-header">
     {{ partial "breadcrumbs.html" . }}

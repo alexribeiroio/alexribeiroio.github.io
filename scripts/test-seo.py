@@ -71,6 +71,7 @@ Texto sintético exclusivo para validação local.
     assert article['author']['@id'].endswith('/#person')
     assert article['mainEntityOfPage']['@id'].endswith('/seo-fixture/#webpage')
     assert all(i.get('width') and i.get('height') and i.get('alt') for i in page.images)
+    assert all(i['width'].isdigit() and int(i['width']) > 0 and i['height'].isdigit() and int(i['height']) > 0 for i in page.images)
     assert 'Texto sintético' in html and '<article' in html and 'rel=author' in html
     assert 'https://www.alexribeiro.io/tags/teste-tecnico/' in (output / 'sitemap.xml').read_text()
     assert 'seo-fixture' in (output / 'llms.txt').read_text()
