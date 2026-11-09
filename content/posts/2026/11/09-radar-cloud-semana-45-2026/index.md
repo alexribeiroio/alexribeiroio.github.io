@@ -2,8 +2,9 @@
 title = 'Radar de Cloud | Semana 45 de 2026'
 description = 'Dez novidades verificadas: segurança de AMIs, migração para Iceberg, SLA do Cognito, Kafka no Lambda e banco para agentes.'
 date = '2026-11-09T07:10:00-03:00'
-lastmod = '2026-11-09T08:05:00-03:00'
+lastmod = '2026-11-09T08:15:00-03:00'
 slug = 'radar-cloud-semana-45-2026'
+postId = 'ba02fde6-e57b-4163-8173-f6718bffdd71'
 draft = false
 categorias = ['Cloud']
 tags = ['cloud', 'aws', 'google-cloud', 'segurança', 'dados']

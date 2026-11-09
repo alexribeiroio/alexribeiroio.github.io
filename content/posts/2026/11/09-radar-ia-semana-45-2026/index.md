@@ -2,8 +2,9 @@
 title = 'Radar de IA | Semana 45 de 2026'
 description = 'Dez novidades verificadas: segurança ofensiva com IA, agentes na AWS, código para agentes, vídeo e imagem.'
 date = '2026-11-09T07:00:00-03:00'
-lastmod = '2026-11-09T08:05:00-03:00'
+lastmod = '2026-11-09T08:15:00-03:00'
 slug = 'radar-ia-semana-45-2026'
+postId = '56abe2c1-a27e-4828-8ed6-a55d42f7679c'
 draft = false
 categorias = ['Inteligência Artificial']
 tags = ['ia', 'agentes', 'segurança', 'modelos', 'aws']
