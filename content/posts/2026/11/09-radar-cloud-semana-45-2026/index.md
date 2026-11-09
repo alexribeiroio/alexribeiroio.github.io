@@ -2,7 +2,7 @@
 title = 'Radar de Cloud | Semana 45 de 2026'
 description = 'Dez novidades verificadas: segurança de AMIs, migração para Iceberg, SLA do Cognito, Kafka no Lambda e banco para agentes.'
 date = '2026-11-09T07:10:00-03:00'
-lastmod = '2026-11-09T08:15:00-03:00'
+lastmod = '2026-11-09T09:30:00-03:00'
 slug = 'radar-cloud-semana-45-2026'
 postId = 'ba02fde6-e57b-4163-8173-f6718bffdd71'
 draft = false
@@ -14,12 +14,9 @@ Entre 2 e 8 de novembro, a AWS concentrou os anúncios que mexem com rotina de o
 
 Esta edição reúne dez novidades conferidas nas páginas originais. Cada item separa o que mudou, a análise e os limites.
 
-## Cobertura e destaques
+## Destaques
 
-- Semana ISO 45 de 2026: de 02/11 às 00h00 até 08/11 às 21h, em America/Sao_Paulo. O domingo foi pesquisado até o horário de fechamento desta edição.
-- Verificação de disponibilidade em 08/11/2026. A data de cada item é a do anúncio na página oficial.
-- Destaques: Inspector para AMIs, migração gerenciada de Hive para Iceberg, SLA de 99,99% no Cognito Plus e AlloyDB Express.
-- Descartados como ruído: expansões de Região, GovCloud e novas famílias de instância, salvo efeito claro para clientes.
+Os que mais mexem na rotina de operação: Inspector para AMIs, migração de Hive para Iceberg no S3 Tables, SLA de 99,99% no Cognito Plus e AlloyDB Express. Conferi cada item na página oficial, com dados até 08/11. Expansões de Região, GovCloud e novas famílias de instância ficaram de fora, salvo quando mudam algo claro para quem usa.
 
 ## 1. Amazon Inspector passa a escanear AMIs do EC2
 
@@ -145,9 +142,6 @@ Fonte: [AWS assistant, AWS](https://aws.amazon.com/about-aws/whats-new/2026/11/q
 
 Em segurança, ligue a varredura de AMIs, ative o inventário de SBOM onde o Inspector já roda e acompanhe a métrica de IMDSv1. Em custo, ative as tags nos snapshots do RDS e revise retenção. Em dados, rode o relatório de compatibilidade do S3 Tables antes de planejar uma migração para Iceberg.
 
-## Limitações desta edição
+## O que ficou de fora
 
-- Itens do Azure Updates não entraram: as páginas oficiais renderizam por JavaScript e não puderam ser lidas. Além disso, a retirada do Azure Fluid Relay aparece com data diferente no feed (2 de junho de 2027) e em um espelho de terceiros (2 de fevereiro de 2027); a data precisa ser confirmada na fonte da Microsoft antes de qualquer citação.
-- O lançamento do Compute Engine API multi-versioning (Google Cloud, 04/11) foi conferido, mas ficou fora do corte de dez itens.
-- Os feeds do Google Cloud Blog, AWS Machine Learning Blog e GitHub são curtos e podem não cobrir toda a semana.
-- Cloud não tem radar diário; esta edição partiu dos feeds e da pesquisa direta nas fontes.
+O Azure não entrou: as páginas oficiais da Microsoft não carregaram para eu ler, e a retirada do Azure Fluid Relay aparece com datas diferentes (2 de junho de 2027 no feed e 2 de fevereiro de 2027 em um espelho de terceiros). Só cito essa data depois de confirmar na fonte da Microsoft. O Compute Engine API multi-versioning, do Google Cloud (04/11), também foi conferido, mas ficou fora do corte de dez itens. Alguns blogs publicam pouco e podem ter deixado escapar algo do início da semana.

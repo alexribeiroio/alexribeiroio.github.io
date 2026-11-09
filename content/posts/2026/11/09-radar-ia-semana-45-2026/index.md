@@ -2,7 +2,7 @@
 title = 'Radar de IA | Semana 45 de 2026'
 description = 'Dez novidades verificadas: segurança ofensiva com IA, agentes na AWS, código para agentes, vídeo e imagem.'
 date = '2026-11-09T07:00:00-03:00'
-lastmod = '2026-11-09T08:15:00-03:00'
+lastmod = '2026-11-09T09:30:00-03:00'
 slug = 'radar-ia-semana-45-2026'
 postId = '56abe2c1-a27e-4828-8ed6-a55d42f7679c'
 draft = false
@@ -14,12 +14,9 @@ Entre 2 e 8 de novembro, as novidades de IA giraram em torno de três perguntas 
 
 Esta edição reúne dez anúncios e publicações técnicas conferidos nas páginas originais. Cada item separa o que mudou, a análise e os limites.
 
-## Cobertura e destaques
+## Destaques
 
-- Semana ISO 45 de 2026: de 02/11 às 00h00 até 08/11 às 21h, em America/Sao_Paulo. O domingo foi pesquisado até o horário de fechamento desta edição.
-- Verificação de disponibilidade em 08/11/2026. Quando a página não informa horário, a data é a do anúncio.
-- Destaques: GPT-6 Cyber, o pipeline que validou 948 exploits no Linux, Web Answer no AgentCore, Claude Code em sessões remotas e o Pando da OpenAI.
-- Não entrou: itens do Anthropic e da Meta sem data confirmada dentro da janela, e anúncios que a AWS publicou na semana anterior e apareceram só no resumo semanal de 02/11.
+Se der para ler só cinco itens: GPT-6 Cyber, o pipeline dos 948 exploits no Linux, Web Answer no AgentCore, Claude Code em sessões remotas e o Pando da OpenAI. Conferi cada um na página original, com dados até domingo à noite (08/11).
 
 ## 1. GPT-6 Cyber chega com acesso restrito
 
@@ -145,9 +142,6 @@ Fonte: [Five rules for evaluating agent skills, Google Cloud](https://cloud.goog
 
 Para segurança, o recado é de capacidade: modelos e pipelines já validam centenas de explorações em um kernel, então o ciclo de patch e a priorização de vulnerabilidades merecem revisão. Para quem constrói agentes, o AgentCore reúne três peças (Web Answer, sessões remotas e Gateway) que valem uma prova de conceito com custo por tarefa medido. Antes de ampliar permissões de qualquer agente, defina o que ele pode executar e como interromper a tarefa.
 
-## Limitações desta edição
+## O que ficou de fora
 
-- Não foram encontrados itens datados dentro da janela nos blogs da Anthropic e da Meta; a página da Anthropic traz itens sem data visível e outros anteriores à semana.
-- O GPT-6.1 Terra no Bedrock e o Step Functions como ferramenta de agente aparecem no resumo semanal da AWS de 02/11, mas se referem à semana anterior.
-- Os feeds do AWS Machine Learning Blog, do GitHub e do Google Cloud são curtos e podem ter deixado itens de início de semana fora da coleta.
-- O radar diário não tinha notícias guardadas para esta semana; a coleta veio dos feeds e da pesquisa direta nas fontes.
+Não achei nada datado da semana nos blogs da Anthropic e da Meta, então nenhum dos dois entrou. O GPT-6.1 Terra no Bedrock e o Step Functions como ferramenta de agente saíram no resumo da AWS de 02/11, mas são da semana anterior. Alguns blogs publicam pouco e podem ter deixado escapar algo do início da semana; se você viu alguma novidade que não está aqui, comenta.
